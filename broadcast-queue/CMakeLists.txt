@@ -41,14 +41,14 @@ endif()
 
 macro(add_memcheck_test TARGET)
     if(MEMCHECK_PROGRAM STREQUAL MEMCHECK_PROGRAM-NOTFOUND)
-        add_test(NAME ${TARGET} COMMAND $<TARGET_FILE:test-broadcast-queue>)
+        add_test(NAME ${TARGET} COMMAND $<TARGET_FILE:${TARGET}>)
     else()
         add_test(
             NAME ${TARGET}
             COMMAND ${MEMCHECK_PROGRAM}
                 --leak-check=full
                 --error-exitcode=1
-                $<TARGET_FILE:test-broadcast-queue>
+                $<TARGET_FILE:${TARGET}>
         )
     endif()
 endmacro()
