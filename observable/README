@@ -1,0 +1,2 @@
+Observer pattern implementation. Observers hold RAII references to a single
+notifier (Observable).
